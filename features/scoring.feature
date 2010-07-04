@@ -2,6 +2,9 @@ Feature: Basic scoring
   Background:
     Given we start a new game with 2 players
 
+  Scenario: Initial score
+    Then player 1's score is 0
+
   Scenario: Three ones (no fives)
     When the player throws 1, 1, 1, 2, 3
     Then player 1's score is 1000
