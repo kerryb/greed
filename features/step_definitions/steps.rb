@@ -1,8 +1,8 @@
 Given %r/^we start a new game with (\d+) players$/ do |number_of_players|
-  pending # express the regexp above with the code you wish you had
+  @game = Game.new number_of_players
 end
 
-When %r/^player (\d+) throws (.*)$/ do |throws|
+When %r/^player (\d+) throws (.*)$/ do |player, throws|
   pending # express the regexp above with the code you wish you had
 end
 
