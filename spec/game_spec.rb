@@ -10,4 +10,14 @@ describe Game do
     player2.stub(:score).and_return 100
     game.scores.should == [10, 100]
   end
+
+  describe "playing a turn" do
+    it "adds the score of a roll of the dice to the current player" do
+      dice_roll = mock :dice_roll
+      Dice.stub(:roll).and_return dice_roll
+      ScoringRules.stub(:score).with(dice_roll).and_return 123
+      player1.should_receive(:add_score).with 123
+      game.play
+    end
+  end
 end

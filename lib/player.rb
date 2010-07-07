@@ -1,5 +1,11 @@
 class Player
-  def score
-    0
+  def initialize
+    @score = 0
+  end
+
+  attr_reader :score
+
+  def add_score score
+    @score += score
   end
 end
