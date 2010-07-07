@@ -1,10 +1,13 @@
 require "spec_helper"
 
 describe Game do
+  let(:player1) { mock :player1 }
+  let(:player2) { mock :player2 }
+  let(:game) { Game.new player1, player2 }
+
   it "exposes players' scores" do
-    Player.stub(:new).and_return mock(:player1, :score => 10), mock(:player2, :score => 100)
-    game = Game.new 2
-    game.score_for_player(1).should == 10
-    game.score_for_player(2).should == 100
+    player1.stub(:score).and_return 10
+    player2.stub(:score).and_return 100
+    game.scores.should == [10, 100]
   end
 end

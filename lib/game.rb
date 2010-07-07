@@ -1,17 +1,14 @@
 require "player"
 
 class Game
-  def initialize number_of_players
-    @players = []
-    number_of_players.times do
-      @players << Player.new
-    end
+  def initialize *players
+    @players = *players
   end
 
   def play
   end
 
-  def score_for_player player
-    @players[player - 1].score
+  def scores
+    @players.map(&:score)
   end
 end

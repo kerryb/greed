@@ -1,6 +1,7 @@
 Given %r/^we start a new game with (\d+) players$/ do |number_of_players|
   @dice = mock :dice
-  @game = Game.new number_of_players.to_i
+  players = (1..number_of_players.to_i).map { Player.new }
+  @game = Game.new players
 end
 
 When %r/^the player throws (.*)$/ do |throws|
@@ -9,5 +10,5 @@ When %r/^the player throws (.*)$/ do |throws|
 end
 
 Then %r/^player (\d+)'s score is (\d+)$/ do |player, score|
-  @game.score_for_player(player.to_i).should == score.to_i
+  @game.scores[player.to_i - 1].should == score.to_i
 end
