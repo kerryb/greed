@@ -2,6 +2,7 @@ require "spec_helper"
 
 describe Player do
   let(:player) { Player.new }
+
   it "has an initial score of zero" do
     player.score.should == 0
   end
